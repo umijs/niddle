@@ -43,7 +43,7 @@ impl NodeRepr {
           .iter()
           .map(|(expanded_name, attr)| {
             let ExpandedName { local, ns: _ } = expanded_name;
-            (local.to_string(), attr.value.to_string())
+            (local.to_string(), attr.value.clone())
           })
           .collect::<IndexMap<String, String>>();
 
