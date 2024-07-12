@@ -8,9 +8,9 @@ use html5ever::{
 use kuchikiki::NodeData;
 use std::io::Result;
 
-use crate::element_ref::ElementRef;
+use crate::element_ref::NodeRepr;
 
-impl Serialize for ElementRef {
+impl Serialize for NodeRepr {
   fn serialize<S: Serializer>(
     &self,
     serializer: &mut S,
