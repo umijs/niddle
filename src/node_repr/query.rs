@@ -6,17 +6,19 @@ use napi::{
   Env, JsObject,
 };
 
+use crate::serializer::serialize_text_only;
+
 use super::NodeRepr;
 
 #[napi]
 impl NodeRepr {
   #[napi]
-  pub fn query_selector(&self, selectors: String) -> Option<NodeRepr> {
+  pub fn select(&self, selectors: String) -> Option<NodeRepr> {
     self.node_ref.select_first(&selectors).ok().map(Into::into)
   }
 
   #[napi]
-  pub fn query_selector_all(&self, selectors: String) -> Vec<NodeRepr> {
+  pub fn select_all(&self, selectors: String) -> Vec<NodeRepr> {
     self
       .node_ref
       .select(&selectors)
@@ -73,7 +75,7 @@ impl NodeRepr {
 
   #[napi]
   pub fn inner_html(&self) -> String {
-    let mut buf = Vec::new();
+    let mut buf = Vec::<u8>::new();
     serialize(
       &mut buf,
       self,
@@ -84,6 +86,13 @@ impl NodeRepr {
       },
     )
     .unwrap();
+    String::from_utf8(buf).unwrap()
+  }
+
+  #[napi]
+  pub fn text(&self) -> String {
+    let mut buf = Vec::<u8>::new();
+    serialize_text_only(self.node_ref.clone(), &mut buf).unwrap();
     String::from_utf8(buf).unwrap()
   }
 }

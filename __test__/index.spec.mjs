@@ -23,13 +23,23 @@ test("should not change html structure", (t) => {
 });
 
 test("should select attributes with ns correctly", (t) => {
-  const html = fs.readFileSync(path.resolve(__dirname, "svg_ns.html"), {
-    encoding: "utf8",
-  });
-
-  const $ = parse(html);
+  const $ = parse(`
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML and SVG Namespace Example</title>
+</head>
+<body>
+  <h1>This is an HTML Heading</h1>
+  <p>This is an HTML paragraph.</p>
+  <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+  </svg>
+</body>
+</html>
+`);
   t.deepEqual(
-    $.querySelector("svg").getAttributes(),
+    $.select("svg").getAttributes(),
     {
       xmlns: "http://www.w3.org/2000/svg",
       width: "100",
@@ -39,8 +49,36 @@ test("should select attributes with ns correctly", (t) => {
   );
 
   t.is(
-    $.querySelector("svg").getAttribute("width"),
+    $.select("svg").getAttribute("width"),
     "100",
     "shoud select single attribute with ns correctly ",
   );
+});
+
+test("shoud append child correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div></body></html>',
+  );
+
+  $1.select(".one").append($2.select("#two"));
+
+  t.is($1.selectAll(".one")[0].text(), "firstsecond");
+  t.is($1.select(".one #two").text(), "second");
+});
+
+test("shoud prepend child correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div></body></html>',
+  );
+
+  $1.select(".one").prepend($2.select("#two"));
+
+  t.is($1.selectAll(".one")[0].text(), "secondfirst");
+  t.is($1.select(".one #two").innerHtml(), "second");
 });

@@ -1,5 +1,6 @@
 use kuchikiki::{ElementData, NodeDataRef, NodeRef};
 
+mod modify;
 mod query;
 
 #[napi]

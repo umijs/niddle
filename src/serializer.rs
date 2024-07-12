@@ -5,8 +5,8 @@ use html5ever::{
   },
   QualName,
 };
-use kuchikiki::NodeData;
-use std::io::Result;
+use kuchikiki::{NodeData, NodeRef};
+use std::io::{Result, Write};
 
 use crate::node_repr::NodeRepr;
 
@@ -65,5 +65,24 @@ impl Serialize for NodeRepr {
         serializer.write_processing_instruction(&contents.0, &contents.1)
       }
     }
+  }
+}
+
+pub(crate) fn serialize_text_only<Wr: Write>(node_ref: NodeRef, writer: &mut Wr) -> Result<()> {
+  match node_ref.data() {
+    NodeData::Text(text) => {
+      match writer.write(text.borrow().as_bytes()) {
+        Ok(it) => it,
+        Err(err) => return Err(err),
+      };
+      Ok(())
+    }
+    NodeData::Element(_) => {
+      for child in node_ref.children() {
+        serialize_text_only(child, writer)?
+      }
+      Ok(())
+    }
+    _ => Ok(()),
   }
 }
