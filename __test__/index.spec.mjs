@@ -14,15 +14,14 @@ function formatHtml(html) {
 }
 
 test("should not change html structure", (t) => {
-  const html = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
+  const jqueryHtml = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
     encoding: "utf8",
   });
-
-  const $ = parse(html);
-  t.is(formatHtml($.outerHtml()), formatHtml(html));
+  const $ = parse(jqueryHtml);
+  t.is(formatHtml($.outerHtml()), formatHtml(jqueryHtml));
 });
 
-test("should select attributes with ns correctly", (t) => {
+test("should select node and get attributes with ns correctly", (t) => {
   const $ = parse(`
 <!DOCTYPE html>
 <html>
@@ -65,8 +64,10 @@ test("shoud append child correctly", (t) => {
 
   $1.select(".one").append($2.select("#two"));
 
-  t.is($1.selectAll(".one")[0].text(), "firstsecond");
-  t.is($1.select(".one #two").text(), "second");
+  t.is(
+    $1.select(".one").outerHtml(),
+    '<div class="one">first<div id="two">second</div></div>',
+  );
 });
 
 test("shoud prepend child correctly", (t) => {
@@ -79,13 +80,15 @@ test("shoud prepend child correctly", (t) => {
 
   $1.select(".one").prepend($2.select("#two"));
 
-  t.is($1.selectAll(".one")[0].text(), "secondfirst");
-  t.is($1.select(".one #two").innerHtml(), "second");
+  t.is(
+    $1.select(".one").outerHtml(),
+    '<div class="one"><div id="two">second</div>first</div>',
+  );
 });
 
 test("shoud insert child after correctly", (t) => {
   const $1 = parse(
-    '<html><head></head><body><div class="one">first</div></body></html>',
+    '<html><head></head><body><div class="one">first</div><div>three</div></body></html>',
   );
   const $2 = parse(
     '<html><head></head><body><div id="two">second</div></body></html>',
@@ -93,15 +96,15 @@ test("shoud insert child after correctly", (t) => {
 
   $1.select(".one").insertAfter($2.select("#two"));
 
-  t.deepEqual(
-    $1.selectAll("div").map((e) => e.text()),
-    ["first", "second"],
+  t.is(
+    $1.select("body").outerHtml(),
+    '<body><div class="one">first</div><div id="two">second</div><div>three</div></body>',
   );
 });
 
 test("shoud insert child before correctly", (t) => {
   const $1 = parse(
-    '<html><head></head><body><div class="one">first</div></body></html>',
+    '<html><head></head><body><div class="one">first</div><div>three</div></body></html>',
   );
   const $2 = parse(
     '<html><head></head><body><div id="two">second</div></body></html>',
@@ -109,8 +112,32 @@ test("shoud insert child before correctly", (t) => {
 
   $1.select(".one").insertBefore($2.select("#two"));
 
-  t.deepEqual(
-    $1.selectAll("div").map((e) => e.text()),
-    ["second", "first"],
+  t.is(
+    $1.select("body").outerHtml(),
+    '<body><div id="two">second</div><div class="one">first</div><div>three</div></body>',
   );
+});
+
+test("shoud set attribute correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+
+  $.select(".one").setAttribute("id", "Hello");
+
+  t.deepEqual($.select(".one").getAttribute("id"), "Hello");
+});
+
+test("shoud set attributes correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+
+  $.select(".one").setAttributes({ id: "Hello", data: "Niddle" });
+
+  t.deepEqual($.select(".one").getAttributes(), {
+    class: "one",
+    id: "Hello",
+    data: "Niddle",
+  });
 });

@@ -1,3 +1,5 @@
+use html5ever::LocalName;
+use indexmap::IndexMap;
 use kuchikiki::NodeRef;
 
 use super::NodeRepr;
@@ -26,6 +28,28 @@ impl NodeRepr {
   pub fn insert_before(&self, new_sibling: &NodeRepr) {
     let node_ref = clone_node_recursive(new_sibling.node_ref.clone());
     self.node_ref.insert_before(node_ref)
+  }
+
+  #[napi]
+  pub fn set_attribute(&self, name: String, value: String) {
+    if let Some(ele) = self.node_ref.as_element() {
+      ele
+        .attributes
+        .borrow_mut()
+        .insert(LocalName::from(name), value);
+    }
+  }
+
+  #[napi]
+  pub fn set_attributes(&self, attrs: IndexMap<String, String>) {
+    if let Some(ele) = self.node_ref.as_element() {
+      attrs.into_iter().for_each(|(name, value)| {
+        ele
+          .attributes
+          .borrow_mut()
+          .insert(LocalName::from(name), value);
+      });
+    }
   }
 }
 
