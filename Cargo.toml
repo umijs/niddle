@@ -1,0 +1,25 @@
+[package]
+edition = "2021"
+name = "niddle"
+version = "0.0.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+html5ever = "0.25.0"
+indexmap = "2.2.6"
+kuchikiki = "0.8.4-speedreader"
+# Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
+napi = { version = "2.12.2", default-features = false, features = [
+  "napi4",
+  "object_indexmap",
+] }
+napi-derive = "2.12.2"
+
+[build-dependencies]
+napi-build = "2.0.1"
+
+[profile.release]
+lto = true
+strip = "symbols"
