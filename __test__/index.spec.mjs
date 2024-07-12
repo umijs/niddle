@@ -82,3 +82,35 @@ test("shoud prepend child correctly", (t) => {
   t.is($1.selectAll(".one")[0].text(), "secondfirst");
   t.is($1.select(".one #two").innerHtml(), "second");
 });
+
+test("shoud insert child after correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div></body></html>',
+  );
+
+  $1.select(".one").insertAfter($2.select("#two"));
+
+  t.deepEqual(
+    $1.selectAll("div").map((e) => e.text()),
+    ["first", "second"],
+  );
+});
+
+test("shoud insert child before correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div></body></html>',
+  );
+
+  $1.select(".one").insertBefore($2.select("#two"));
+
+  t.deepEqual(
+    $1.selectAll("div").map((e) => e.text()),
+    ["second", "first"],
+  );
+});
