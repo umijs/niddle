@@ -13,12 +13,34 @@ function formatHtml(html) {
   return beautify.html(html, { preserve_newlines: false });
 }
 
-const originHtml = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
-  encoding: "utf8",
+test("should parse correctly", (t) => {
+  const html = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
+    encoding: "utf8",
+  });
+
+  const $ = parse(html);
+  t.is(formatHtml($.outerHtml()), formatHtml(html));
 });
 
-const $ = parse(originHtml);
+test("should select attributes with ns correctly", (t) => {
+  const html = fs.readFileSync(path.resolve(__dirname, "svg_ns.html"), {
+    encoding: "utf8",
+  });
 
-test("should parse correctly", (t) => {
-  t.is(formatHtml($.outerHtml()), formatHtml(originHtml));
+  const $ = parse(html);
+  t.deepEqual(
+    $.querySelector("svg").getAttributes(),
+    {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "100",
+      height: "100",
+    },
+    "shoud select all attributes with ns correctly ",
+  );
+
+  t.is(
+    $.querySelector("svg").getAttribute("width"),
+    "100",
+    "shoud select single attribute with ns correctly ",
+  );
 });

@@ -1,15 +1,12 @@
 use html5ever::serialize::{self, serialize, SerializeOpts};
 use indexmap::IndexMap;
-use kuchikiki::{ElementData, ExpandedName, NodeDataRef, NodeRef};
+use kuchikiki::ExpandedName;
 use napi::{
   bindgen_prelude::{FromNapiValue, ToNapiValue},
   Env, JsObject,
 };
 
-#[napi]
-pub struct NodeRepr {
-  pub(crate) node_ref: NodeRef,
-}
+use super::NodeRepr;
 
 #[napi]
 impl NodeRepr {
@@ -66,7 +63,7 @@ impl NodeRepr {
       self,
       SerializeOpts {
         traversal_scope: serialize::TraversalScope::IncludeNode,
-        create_missing_parent: true,
+        create_missing_parent: false,
         scripting_enabled: true,
       },
     )
@@ -82,19 +79,11 @@ impl NodeRepr {
       self,
       SerializeOpts {
         traversal_scope: serialize::TraversalScope::ChildrenOnly(None),
-        create_missing_parent: true,
+        create_missing_parent: false,
         scripting_enabled: true,
       },
     )
     .unwrap();
     String::from_utf8(buf).unwrap()
-  }
-}
-
-impl From<NodeDataRef<ElementData>> for NodeRepr {
-  fn from(element: NodeDataRef<ElementData>) -> Self {
-    Self {
-      node_ref: element.as_node().clone(),
-    }
   }
 }
