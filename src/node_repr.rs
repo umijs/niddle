@@ -6,7 +6,7 @@ use napi::{
   Env, JsObject,
 };
 
-#[napi(js_name = "Node")]
+#[napi]
 pub struct NodeRepr {
   pub(crate) node_ref: NodeRef,
 }
@@ -66,7 +66,8 @@ impl NodeRepr {
       self,
       SerializeOpts {
         traversal_scope: serialize::TraversalScope::IncludeNode,
-        ..Default::default()
+        create_missing_parent: true,
+        scripting_enabled: true,
       },
     )
     .unwrap();
@@ -81,7 +82,8 @@ impl NodeRepr {
       self,
       SerializeOpts {
         traversal_scope: serialize::TraversalScope::ChildrenOnly(None),
-        ..Default::default()
+        create_missing_parent: true,
+        scripting_enabled: true,
       },
     )
     .unwrap();

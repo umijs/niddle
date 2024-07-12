@@ -13,10 +13,6 @@ function formatHtml(html) {
   return beautify.html(html, { preserve_newlines: false });
 }
 
-function htmlEqual(htmlLeft, htmlRight) {
-  return formatHtml(htmlLeft) === formatHtml(htmlRight);
-}
-
 const originHtml = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
   encoding: "utf8",
 });
@@ -24,5 +20,5 @@ const originHtml = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
 const $ = parse(originHtml);
 
 test("should parse correctly", (t) => {
-  t.assert(htmlEqual($.outerHtml(), originHtml));
+  t.is(formatHtml($.outerHtml()), formatHtml(originHtml));
 });
