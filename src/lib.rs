@@ -1,12 +1,12 @@
 #[macro_use]
 extern crate napi_derive;
 
-use element_ref::NodeRepr;
 use kuchikiki::{parse_html, traits::*};
+use node_repr::NodeRepr;
 
 mod serializer;
 
-mod element_ref;
+mod node_repr;
 
 #[napi]
 pub fn parse(html: String) -> NodeRepr {

@@ -8,7 +8,7 @@ use html5ever::{
 use kuchikiki::NodeData;
 use std::io::Result;
 
-use crate::element_ref::NodeRepr;
+use crate::node_repr::NodeRepr;
 
 impl Serialize for NodeRepr {
   fn serialize<S: Serializer>(
