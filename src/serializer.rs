@@ -71,10 +71,7 @@ impl Serialize for NodeRepr {
 pub(crate) fn serialize_text_only<Wr: Write>(node_ref: &NodeRef, writer: &mut Wr) -> Result<()> {
   match node_ref.data() {
     NodeData::Text(text) => {
-      match writer.write(text.borrow().as_bytes()) {
-        Ok(it) => it,
-        Err(err) => return Err(err),
-      };
+      writer.write_all(text.borrow().as_bytes())?;
       Ok(())
     }
     NodeData::Element(_) => {
