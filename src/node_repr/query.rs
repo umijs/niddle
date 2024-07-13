@@ -70,7 +70,7 @@ impl NodeRepr {
       },
     )
     .unwrap();
-    String::from_utf8(u8_vec).unwrap()
+    unsafe { String::from_utf8_unchecked(u8_vec) }
   }
 
   #[napi]
@@ -86,13 +86,13 @@ impl NodeRepr {
       },
     )
     .unwrap();
-    String::from_utf8(buf).unwrap()
+    unsafe { String::from_utf8_unchecked(buf) }
   }
 
   #[napi]
   pub fn text(&self) -> String {
     let mut buf = Vec::<u8>::new();
     serialize_text_only(self.node_ref.clone(), &mut buf).unwrap();
-    String::from_utf8(buf).unwrap()
+    unsafe { String::from_utf8_unchecked(buf) }
   }
 }
