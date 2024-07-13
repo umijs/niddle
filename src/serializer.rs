@@ -68,7 +68,7 @@ impl Serialize for NodeRepr {
   }
 }
 
-pub(crate) fn serialize_text_only<Wr: Write>(node_ref: NodeRef, writer: &mut Wr) -> Result<()> {
+pub(crate) fn serialize_text_only<Wr: Write>(node_ref: &NodeRef, writer: &mut Wr) -> Result<()> {
   match node_ref.data() {
     NodeData::Text(text) => {
       match writer.write(text.borrow().as_bytes()) {
@@ -79,7 +79,7 @@ pub(crate) fn serialize_text_only<Wr: Write>(node_ref: NodeRef, writer: &mut Wr)
     }
     NodeData::Element(_) => {
       for child in node_ref.children() {
-        serialize_text_only(child, writer)?
+        serialize_text_only(&child, writer)?
       }
       Ok(())
     }

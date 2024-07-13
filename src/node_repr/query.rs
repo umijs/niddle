@@ -92,7 +92,7 @@ impl NodeRepr {
   #[napi]
   pub fn text(&self) -> String {
     let mut buf = Vec::<u8>::new();
-    serialize_text_only(self.node_ref.clone(), &mut buf).unwrap();
+    serialize_text_only(&self.node_ref, &mut buf).unwrap();
     unsafe { String::from_utf8_unchecked(buf) }
   }
 }
