@@ -44,17 +44,17 @@ test("should select node and get attributes with ns correctly", (t) => {
       width: "100",
       height: "100",
     },
-    "shoud select all attributes with ns correctly ",
+    "should select all attributes with ns correctly ",
   );
 
   t.is(
     $.select("svg").getAttribute("width"),
     "100",
-    "shoud select single attribute with ns correctly ",
+    "should select single attribute with ns correctly ",
   );
 });
 
-test("shoud append child correctly", (t) => {
+test("should append child correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',
   );
@@ -70,7 +70,7 @@ test("shoud append child correctly", (t) => {
   );
 });
 
-test("shoud prepend child correctly", (t) => {
+test("should prepend child correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',
   );
@@ -86,7 +86,7 @@ test("shoud prepend child correctly", (t) => {
   );
 });
 
-test("shoud insert child after correctly", (t) => {
+test("should insert child after correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div><div>three</div></body></html>',
   );
@@ -102,7 +102,7 @@ test("shoud insert child after correctly", (t) => {
   );
 });
 
-test("shoud insert child before correctly", (t) => {
+test("should insert child before correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div><div>three</div></body></html>',
   );
@@ -118,7 +118,7 @@ test("shoud insert child before correctly", (t) => {
   );
 });
 
-test("shoud set attribute correctly", (t) => {
+test("should set attribute correctly", (t) => {
   const $ = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',
   );
@@ -128,7 +128,7 @@ test("shoud set attribute correctly", (t) => {
   t.deepEqual($.select(".one").getAttribute("id"), "Hello");
 });
 
-test("shoud set attributes correctly", (t) => {
+test("should set attributes correctly", (t) => {
   const $ = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',
   );
