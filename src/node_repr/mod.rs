@@ -15,3 +15,9 @@ impl From<NodeDataRef<ElementData>> for NodeRepr {
     }
   }
 }
+
+impl From<NodeRef> for NodeRepr {
+  fn from(node_ref: NodeRef) -> Self {
+    Self { node_ref }
+  }
+}

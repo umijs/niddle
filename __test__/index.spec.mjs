@@ -70,6 +70,54 @@ test("should append child correctly", (t) => {
   );
 });
 
+test("should select correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first<div id="two">second</div></div></body></html>',
+  );
+
+  t.is(
+    $.select(".one").select("#two").outerHtml(),
+    '<div id="two">second</div>',
+  );
+});
+
+test("should select all correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first</div><div id="two">second</div></body></html>',
+  );
+
+  t.deepEqual(
+    $.selectAll("div").map((e) => e.outerHtml()),
+    ['<div class="one">first</div>', '<div id="two">second</div>'],
+  );
+
+  t.deepEqual(
+    $.selectAll("body>*").map((e) => e.outerHtml()),
+    ['<div class="one">first</div>', '<div id="two">second</div>'],
+  );
+});
+
+test("should get all childs correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first</div><div id="two">second</div></body></html>',
+  );
+
+  t.deepEqual(
+    $.select("body")
+      .getChildrens()
+      .map((e) => e.outerHtml()),
+    ['<div class="one">first</div>', '<div id="two">second</div>'],
+  );
+});
+
+test("should get text correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first</div><div id="two">second</div></body></html>',
+  );
+
+  t.deepEqual($.select("body").text()["firstsecond"]);
+});
+
 test("should prepend child correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',

@@ -26,6 +26,11 @@ impl NodeRepr {
   }
 
   #[napi]
+  pub fn get_childrens(&self) -> Vec<NodeRepr> {
+    self.node_ref.children().map(Into::into).collect()
+  }
+
+  #[napi]
   pub fn get_attribute(&self, name: String) -> Option<String> {
     self
       .node_ref
