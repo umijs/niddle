@@ -13,7 +13,7 @@ function formatHtml(html) {
   return beautify.html(html, { preserve_newlines: false });
 }
 
-test("should not change html structure", (t) => {
+test("should not change the original html structure", (t) => {
   const jqueryHtml = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
     encoding: "utf8",
   });
