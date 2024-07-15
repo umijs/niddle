@@ -50,23 +50,5 @@
     "version": "napi version"
   },
   "repository": "git@github.com:xusd320/niddle.git",
-  "optionalDependencies": {
-    "niddle-win32-x64-msvc": "0.0.6",
-    "niddle-darwin-x64": "0.0.6",
-    "niddle-linux-x64-gnu": "0.0.6",
-    "niddle-darwin-arm64": "0.0.6",
-    "niddle-android-arm64": "0.0.6",
-    "niddle-linux-arm64-gnu": "0.0.6",
-    "niddle-linux-arm64-musl": "0.0.6",
-    "niddle-win32-arm64-msvc": "0.0.6",
-    "niddle-linux-arm-gnueabihf": "0.0.6",
-    "niddle-linux-arm-musleabihf": "0.0.6",
-    "niddle-linux-x64-musl": "0.0.6",
-    "niddle-freebsd-x64": "0.0.6",
-    "niddle-win32-ia32-msvc": "0.0.6",
-    "niddle-android-arm-eabi": "0.0.6",
-    "niddle-darwin-universal": "0.0.6",
-    "niddle-linux-riscv64-gnu": "0.0.6"
-  },
   "packageManager": "yarn@4.3.1"
 }
