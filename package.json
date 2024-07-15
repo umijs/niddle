@@ -1,6 +1,6 @@
 {
   "name": "niddle",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -67,5 +67,6 @@
     "niddle-android-arm-eabi": "0.0.6",
     "niddle-darwin-universal": "0.0.6",
     "niddle-linux-riscv64-gnu": "0.0.6"
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }
