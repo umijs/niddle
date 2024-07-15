@@ -1,6 +1,5 @@
 use html5ever::LocalName;
 use indexmap::IndexMap;
-use kuchikiki::NodeRef;
 
 use super::NodeRepr;
 
@@ -8,8 +7,7 @@ use super::NodeRepr;
 impl NodeRepr {
   #[napi]
   pub fn append(&self, new_child: &NodeRepr) {
-    let node_ref = clone_node_ref_recursive(&new_child.node_ref);
-    self.node_ref.append(node_ref)
+    self.node_ref.append(new_child.node_ref.clone())
   }
 
   #[napi]
@@ -21,8 +19,7 @@ impl NodeRepr {
 
   #[napi]
   pub fn prepend(&self, new_child: &NodeRepr) {
-    let node_ref = clone_node_ref_recursive(&new_child.node_ref);
-    self.node_ref.prepend(node_ref)
+    self.node_ref.prepend(new_child.node_ref.clone())
   }
 
   #[napi]
@@ -39,8 +36,7 @@ impl NodeRepr {
 
   #[napi]
   pub fn insert_after(&self, new_sibling: &NodeRepr) {
-    let node_ref = clone_node_ref_recursive(&new_sibling.node_ref);
-    self.node_ref.insert_after(node_ref)
+    self.node_ref.insert_after(new_sibling.node_ref.clone())
   }
 
   #[napi]
@@ -61,8 +57,7 @@ impl NodeRepr {
 
   #[napi]
   pub fn insert_before(&self, new_sibling: &NodeRepr) {
-    let node_ref = clone_node_ref_recursive(&new_sibling.node_ref);
-    self.node_ref.insert_before(node_ref)
+    self.node_ref.insert_before(new_sibling.node_ref.clone())
   }
 
   #[napi]
@@ -117,15 +112,4 @@ impl NodeRepr {
       ele.attributes.borrow_mut().map.clear();
     }
   }
-}
-
-fn clone_node_ref_recursive(node_ref: &NodeRef) -> NodeRef {
-  let new_node_ref = NodeRef::new(node_ref.data().clone());
-
-  node_ref.children().for_each(|child| {
-    let child_node_ref = clone_node_ref_recursive(&child);
-    new_node_ref.append(child_node_ref);
-  });
-
-  new_node_ref
 }

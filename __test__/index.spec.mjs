@@ -285,3 +285,20 @@ test("should remove all attributes correctly", (t) => {
 
   t.deepEqual($.select("div").getAttributes(), {});
 });
+
+test("should clone correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first</div><div id="two">second</div></body></html>',
+  );
+
+  t.is($.select(".one").clone().outerHtml(), '<div class="one"></div>');
+  t.is(
+    $.select(".one").cloneRecursive().outerHtml(),
+    '<div class="one">first</div>',
+  );
+
+  const $cloned = $.select(".one").cloneRecursive();
+  $cloned.select(".one").getChildren()[0].remove();
+  t.is($cloned.select(".one").outerHtml(), '<div class="one"></div>');
+  t.is($.select(".one").outerHtml(), '<div class="one">first</div>');
+});
