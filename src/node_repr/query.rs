@@ -1,10 +1,6 @@
 use html5ever::serialize::{self, serialize, SerializeOpts};
 use indexmap::IndexMap;
 use kuchikiki::ExpandedName;
-use napi::{
-  bindgen_prelude::{FromNapiValue, ToNapiValue},
-  Env, JsObject,
-};
 
 use crate::serializer::serialize_text_only;
 
@@ -39,27 +35,18 @@ impl NodeRepr {
   }
 
   #[napi]
-  pub fn get_attributes(&self, env: Env) -> JsObject {
-    self.node_ref.as_element().map_or_else(
-      || env.create_object().unwrap(),
-      |e| {
-        let attrs_map = e
-          .attributes
-          .borrow()
-          .map
-          .iter()
-          .map(|(expanded_name, attr)| {
-            let ExpandedName { local, ns: _ } = expanded_name;
-            (local.to_string(), attr.value.clone())
-          })
-          .collect::<IndexMap<String, String>>();
-
-        unsafe {
-          let js_value = ToNapiValue::to_napi_value(env.raw(), attrs_map).unwrap();
-          JsObject::from_napi_value(env.raw(), js_value).unwrap()
-        }
-      },
-    )
+  pub fn get_attributes(&self) -> IndexMap<String, String> {
+    self.node_ref.as_element().map_or_else(IndexMap::new, |e| {
+      e.attributes
+        .borrow()
+        .map
+        .iter()
+        .map(|(expanded_name, attr)| {
+          let ExpandedName { local, ns: _ } = expanded_name;
+          (local.to_string(), attr.value.clone())
+        })
+        .collect::<IndexMap<String, String>>()
+    })
   }
 
   #[napi]
