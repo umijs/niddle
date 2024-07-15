@@ -1,6 +1,6 @@
 {
   "name": "niddle",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -48,5 +48,6 @@
     "test": "ava",
     "universal": "napi universal",
     "version": "napi version"
-  }
+  },
+  "repository": "git@github.com:xusd320/niddle.git"
 }
