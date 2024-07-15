@@ -13,9 +13,28 @@ impl NodeRepr {
   }
 
   #[napi]
+  pub fn append_sequence(&self, new_children: Vec<&NodeRepr>) {
+    new_children
+      .into_iter()
+      .for_each(|new_child| self.append(new_child))
+  }
+
+  #[napi]
   pub fn prepend(&self, new_child: &NodeRepr) {
     let node_ref = clone_node_ref_recursive(&new_child.node_ref);
     self.node_ref.prepend(node_ref)
+  }
+
+  #[napi]
+  pub fn prepend_sequence(&self, new_children: Vec<&NodeRepr>) {
+    if !new_children.is_empty() {
+      self.prepend(new_children[0]);
+      new_children
+        .iter()
+        .skip(1)
+        .enumerate()
+        .for_each(|(index, new_sibling)| self.get_children()[index].insert_after(new_sibling))
+    }
   }
 
   #[napi]
@@ -25,9 +44,37 @@ impl NodeRepr {
   }
 
   #[napi]
+  pub fn insert_sequence_after(&self, new_siblings: Vec<&NodeRepr>) {
+    if !new_siblings.is_empty() {
+      self.insert_after(new_siblings[0]);
+      new_siblings
+        .iter()
+        .skip(1)
+        .enumerate()
+        .for_each(|(index, new_sibling)| {
+          if let Some(sibling) = self.node_ref.following_siblings().nth(index) {
+            NodeRepr::from(sibling).insert_after(new_sibling)
+          }
+        });
+    }
+  }
+
+  #[napi]
   pub fn insert_before(&self, new_sibling: &NodeRepr) {
     let node_ref = clone_node_ref_recursive(&new_sibling.node_ref);
     self.node_ref.insert_before(node_ref)
+  }
+
+  #[napi]
+  pub fn insert_sequence_before(&self, new_siblings: Vec<&NodeRepr>) {
+    if !new_siblings.is_empty() {
+      self.insert_before(new_siblings[0]);
+      new_siblings.iter().skip(1).for_each(|new_sibling| {
+        if let Some(sibling) = self.node_ref.preceding_siblings().last() {
+          NodeRepr::from(sibling).insert_after(new_sibling)
+        }
+      });
+    }
   }
 
   #[napi]

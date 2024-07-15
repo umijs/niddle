@@ -54,23 +54,7 @@ test("should select node and get attributes with ns correctly", (t) => {
   );
 });
 
-test("should append child correctly", (t) => {
-  const $1 = parse(
-    '<html><head></head><body><div class="one">first</div></body></html>',
-  );
-  const $2 = parse(
-    '<html><head></head><body><div id="two">second</div></body></html>',
-  );
-
-  $1.select(".one").append($2.select("#two"));
-
-  t.is(
-    $1.select(".one").outerHtml(),
-    '<div class="one">first<div id="two">second</div></div>',
-  );
-});
-
-test("should select correctly", (t) => {
+test("should select first correctly", (t) => {
   const $ = parse(
     '<html><head></head><body><div class="one">first<div id="two">second</div></div></body></html>',
   );
@@ -118,6 +102,38 @@ test("should get text correctly", (t) => {
   t.deepEqual($.select("body").text()["firstsecond"]);
 });
 
+test("should append child correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div></body></html>',
+  );
+
+  $1.select(".one").append($2.select("#two"));
+
+  t.is(
+    $1.select(".one").outerHtml(),
+    '<div class="one">first<div id="two">second</div></div>',
+  );
+});
+
+test("should append sequence children correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div><div>third</div></body></html>',
+  );
+
+  $1.select(".one").appendSequence($2.selectAll("div"));
+
+  t.is(
+    $1.select(".one").outerHtml(),
+    '<div class="one">first<div id="two">second</div><div>third</div></div>',
+  );
+});
+
 test("should prepend child correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',
@@ -131,6 +147,22 @@ test("should prepend child correctly", (t) => {
   t.is(
     $1.select(".one").outerHtml(),
     '<div class="one"><div id="two">second</div>first</div>',
+  );
+});
+
+test("should prepend sequence children correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div><div>third</div></body></html>',
+  );
+
+  $1.select(".one").prependSequence($2.selectAll("div"));
+
+  t.is(
+    $1.select(".one").outerHtml(),
+    '<div class="one"><div id="two">second</div><div>third</div>first</div>',
   );
 });
 
@@ -150,6 +182,22 @@ test("should insert child after correctly", (t) => {
   );
 });
 
+test("should insert sequence children after correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div><div>third</div></body></html>',
+  );
+
+  $1.select(".one").insertSequenceAfter($2.selectAll("div"));
+
+  t.is(
+    $1.select("body").outerHtml(),
+    '<body><div class="one">first</div><div id="two">second</div><div>third</div></body>',
+  );
+});
+
 test("should insert child before correctly", (t) => {
   const $1 = parse(
     '<html><head></head><body><div class="one">first</div><div>three</div></body></html>',
@@ -163,6 +211,22 @@ test("should insert child before correctly", (t) => {
   t.is(
     $1.select("body").outerHtml(),
     '<body><div id="two">second</div><div class="one">first</div><div>three</div></body>',
+  );
+});
+
+test("should inserd sequence children before correctly", (t) => {
+  const $1 = parse(
+    '<html><head></head><body><div class="one">first</div></body></html>',
+  );
+  const $2 = parse(
+    '<html><head></head><body><div id="two">second</div><div>third</div></body></html>',
+  );
+
+  $1.select(".one").insertSequenceBefore($2.selectAll("div"));
+
+  t.is(
+    $1.select("body").outerHtml(),
+    '<body><div id="two">second</div><div>third</div><div class="one">first</div></body>',
   );
 });
 
