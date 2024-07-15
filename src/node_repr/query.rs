@@ -26,7 +26,7 @@ impl NodeRepr {
   }
 
   #[napi]
-  pub fn get_childrens(&self) -> Vec<NodeRepr> {
+  pub fn get_children(&self) -> Vec<NodeRepr> {
     self.node_ref.children().map(Into::into).collect()
   }
 

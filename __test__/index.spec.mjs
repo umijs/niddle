@@ -104,7 +104,7 @@ test("should get all childs correctly", (t) => {
 
   t.deepEqual(
     $.select("body")
-      .getChildrens()
+      .getChildren()
       .map((e) => e.outerHtml()),
     ['<div class="one">first</div>', '<div id="two">second</div>'],
   );
