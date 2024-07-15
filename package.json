@@ -1,6 +1,6 @@
 {
   "name": "niddle",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -69,4 +69,3 @@
     "niddle-linux-riscv64-gnu": "0.0.2"
   }
 }
-
