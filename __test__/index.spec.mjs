@@ -118,6 +118,16 @@ test("should insert child before correctly", (t) => {
   );
 });
 
+test("should remove node correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one">first<div>second</div></div><div>three</div></body></html>',
+  );
+
+  $.select(".one").remove();
+
+  t.is($.select("body").outerHtml(), "<body><div>three</div></body>");
+});
+
 test("should set attribute correctly", (t) => {
   const $ = parse(
     '<html><head></head><body><div class="one">first</div></body></html>',
@@ -140,4 +150,26 @@ test("should set attributes correctly", (t) => {
     id: "Hello",
     data: "Niddle",
   });
+});
+
+test("should remove attribute correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one" id="Hello">first</div></body></html>',
+  );
+
+  $.select(".one").removeAttribute("class");
+
+  t.deepEqual($.select("#Hello").getAttributes(), {
+    id: "Hello",
+  });
+});
+
+test("should remove all attributes correctly", (t) => {
+  const $ = parse(
+    '<html><head></head><body><div class="one" id="Hello">first</div></body></html>',
+  );
+
+  $.select(".one").removeAllAttributes();
+
+  t.deepEqual($.select("div").getAttributes(), {});
 });

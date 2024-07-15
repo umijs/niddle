@@ -31,6 +31,11 @@ impl NodeRepr {
   }
 
   #[napi]
+  pub fn remove(&self) {
+    self.node_ref.detach()
+  }
+
+  #[napi]
   pub fn set_attribute(&self, name: String, value: String) {
     if let Some(ele) = self.node_ref.as_element() {
       ele
@@ -49,6 +54,20 @@ impl NodeRepr {
           .borrow_mut()
           .insert(LocalName::from(name), value);
       });
+    }
+  }
+
+  #[napi]
+  pub fn remove_attribute(&self, name: String) {
+    if let Some(ele) = self.node_ref.as_element() {
+      ele.attributes.borrow_mut().remove(LocalName::from(name));
+    }
+  }
+
+  #[napi]
+  pub fn remove_all_attributes(&self) {
+    if let Some(ele) = self.node_ref.as_element() {
+      ele.attributes.borrow_mut().map.clear();
     }
   }
 }
