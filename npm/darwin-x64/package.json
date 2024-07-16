@@ -1,5 +1,5 @@
 {
-  "name": "niddle-darwin-x64",
+  "name": "@niddle-rs/niddle-darwin-x64",
   "version": "0.0.10",
   "os": [
     "darwin"
@@ -7,12 +7,14 @@
   "cpu": [
     "x64"
   ],
-  "main": "niddle.darwin-x64.node",
+  "main": "@niddle-rs/niddle.darwin-x64.node",
   "files": [
-    "niddle.darwin-x64.node"
+    "@niddle-rs/niddle.darwin-x64.node"
   ],
+  "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
-  }
+  },
+  "repository": "https://github.com/niddle-rs/niddle"
 }

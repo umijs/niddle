@@ -1,5 +1,5 @@
 {
-  "name": "niddle-linux-riscv64-gnu",
+  "name": "@niddle-rs/niddle-linux-riscv64-gnu",
   "version": "0.0.10",
   "os": [
     "linux"
@@ -7,14 +7,16 @@
   "cpu": [
     "riscv64"
   ],
-  "main": "niddle.linux-riscv64-gnu.node",
+  "main": "@niddle-rs/niddle.linux-riscv64-gnu.node",
   "files": [
-    "niddle.linux-riscv64-gnu.node"
+    "@niddle-rs/niddle.linux-riscv64-gnu.node"
   ],
+  "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
   },
+  "repository": "https://github.com/niddle-rs/niddle",
   "libc": [
     "glibc"
   ]

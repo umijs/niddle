@@ -1,5 +1,5 @@
 {
-  "name": "niddle-win32-x64-msvc",
+  "name": "@niddle-rs/niddle-win32-x64-msvc",
   "version": "0.0.10",
   "os": [
     "win32"
@@ -7,12 +7,14 @@
   "cpu": [
     "x64"
   ],
-  "main": "niddle.win32-x64-msvc.node",
+  "main": "@niddle-rs/niddle.win32-x64-msvc.node",
   "files": [
-    "niddle.win32-x64-msvc.node"
+    "@niddle-rs/niddle.win32-x64-msvc.node"
   ],
+  "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
-  }
+  },
+  "repository": "https://github.com/niddle-rs/niddle"
 }

@@ -1,3 +1,3 @@
-# `niddle-linux-arm64-gnu`
+# `@niddle-rs/niddle-linux-arm64-gnu`
 
-This is the **aarch64-unknown-linux-gnu** binary for `niddle`
+This is the **aarch64-unknown-linux-gnu** binary for `@niddle-rs/niddle`

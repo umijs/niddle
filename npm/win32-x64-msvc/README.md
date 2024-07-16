@@ -1,3 +1,3 @@
-# `niddle-win32-x64-msvc`
+# `@niddle-rs/niddle-win32-x64-msvc`
 
-This is the **x86_64-pc-windows-msvc** binary for `niddle`
+This is the **x86_64-pc-windows-msvc** binary for `@niddle-rs/niddle`

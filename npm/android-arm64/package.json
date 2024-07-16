@@ -1,5 +1,5 @@
 {
-  "name": "niddle-android-arm64",
+  "name": "@niddle-rs/niddle-android-arm64",
   "version": "0.0.10",
   "os": [
     "android"
@@ -7,12 +7,14 @@
   "cpu": [
     "arm64"
   ],
-  "main": "niddle.android-arm64.node",
+  "main": "@niddle-rs/niddle.android-arm64.node",
   "files": [
-    "niddle.android-arm64.node"
+    "@niddle-rs/niddle.android-arm64.node"
   ],
+  "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
-  }
+  },
+  "repository": "https://github.com/niddle-rs/niddle"
 }

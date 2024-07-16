@@ -1,5 +1,5 @@
 {
-  "name": "niddle-linux-arm-musleabihf",
+  "name": "@niddle-rs/niddle-linux-arm-musleabihf",
   "version": "0.0.10",
   "os": [
     "linux"
@@ -7,12 +7,14 @@
   "cpu": [
     "arm"
   ],
-  "main": "niddle.linux-arm-musleabihf.node",
+  "main": "@niddle-rs/niddle.linux-arm-musleabihf.node",
   "files": [
-    "niddle.linux-arm-musleabihf.node"
+    "@niddle-rs/niddle.linux-arm-musleabihf.node"
   ],
+  "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
-  }
+  },
+  "repository": "https://github.com/niddle-rs/niddle"
 }

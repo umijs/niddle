@@ -1,3 +1,3 @@
-# `niddle-linux-riscv64-gnu`
+# `@niddle-rs/niddle-linux-riscv64-gnu`
 
-This is the **riscv64gc-unknown-linux-gnu** binary for `niddle`
+This is the **riscv64gc-unknown-linux-gnu** binary for `@niddle-rs/niddle`

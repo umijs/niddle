@@ -1,15 +1,17 @@
 {
-  "name": "niddle-darwin-universal",
+  "name": "@niddle-rs/niddle-darwin-universal",
   "version": "0.0.10",
   "os": [
     "darwin"
   ],
-  "main": "niddle.darwin-universal.node",
+  "main": "@niddle-rs/niddle.darwin-universal.node",
   "files": [
-    "niddle.darwin-universal.node"
+    "@niddle-rs/niddle.darwin-universal.node"
   ],
+  "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
   "engines": {
     "node": ">= 10"
-  }
+  },
+  "repository": "https://github.com/niddle-rs/niddle"
 }

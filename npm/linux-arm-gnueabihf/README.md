@@ -1,3 +1,3 @@
-# `niddle-linux-arm-gnueabihf`
+# `@niddle-rs/niddle-linux-arm-gnueabihf`
 
-This is the **armv7-unknown-linux-gnueabihf** binary for `niddle`
+This is the **armv7-unknown-linux-gnueabihf** binary for `@niddle-rs/niddle`

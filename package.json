@@ -9,7 +9,7 @@
     "niddle.*.node"
   ],
   "napi": {
-    "name": "niddle",
+    "name": "@niddle-rs/niddle",
     "package": {
       "name": "@niddle-rs/niddle"
     },
@@ -52,6 +52,7 @@
     "universal": "napi universal",
     "version": "napi version"
   },
-  "repository": "git@github.com:xusd320/niddle.git",
-  "packageManager": "yarn@4.3.1"
+  "repository": "https://github.com/niddle-rs/niddle",
+  "packageManager": "yarn@4.3.1",
+  "description": "A super fast html parser and manipulator written in rust."
 }

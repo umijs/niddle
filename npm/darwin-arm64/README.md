@@ -1,3 +1,3 @@
-# `niddle-darwin-arm64`
+# `@niddle-rs/niddle-darwin-arm64`
 
-This is the **aarch64-apple-darwin** binary for `niddle`
+This is the **aarch64-apple-darwin** binary for `@niddle-rs/niddle`
