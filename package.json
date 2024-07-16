@@ -10,6 +10,9 @@
   ],
   "napi": {
     "name": "niddle",
+    "package": {
+      "name": "@niddle-rs/niddle"
+    },
     "triples": {
       "additional": [
         "aarch64-apple-darwin",
