@@ -9,7 +9,7 @@
     "niddle.*.node"
   ],
   "napi": {
-    "name": "@niddle-rs/niddle",
+    "name": "niddle",
     "package": {
       "name": "@niddle-rs/niddle"
     },
