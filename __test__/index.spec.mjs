@@ -10,7 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function formatHtml(html) {
-  return beautify.html(html, { preserve_newlines: false });
+  return beautify
+    .html(html, { preserve_newlines: false })
+    .replace(/\r\n/g, "\n");
 }
 
 test("should not change the original html structure", (t) => {
