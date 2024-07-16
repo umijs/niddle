@@ -1,6 +1,6 @@
 {
   "name": "@niddle-rs/niddle-win32-ia32-msvc",
-  "version": "0.0.25",
+  "version": "0.1.0",
   "os": [
     "win32"
   ],
