@@ -1,5 +1,9 @@
+#![feature(test)]
+
 #[macro_use]
 extern crate napi_derive;
+
+extern crate test;
 
 use kuchikiki::{parse_html, traits::*};
 use node_repr::NodeRepr;
@@ -14,5 +18,17 @@ pub fn parse(html: String) -> NodeRepr {
   let document_node = parser.one(html).document_node;
   NodeRepr {
     node_ref: document_node,
+  }
+}
+
+#[cfg(test)]
+mod tests {
+  use super::parse;
+  use test::Bencher;
+
+  #[bench]
+  fn bench_parse(b: &mut Bencher) {
+    let html = include_str!("../test/jquery.html").to_string();
+    b.iter(|| parse(html.clone()));
   }
 }
