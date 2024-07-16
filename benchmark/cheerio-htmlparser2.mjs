@@ -1,11 +1,11 @@
-import * as niddle from "../index.js";
+import { load } from "cheerio";
 import benchmark from "htmlparser-benchmark";
 
 export default function cheerio() {
   return new Promise((res) => {
     var bench = benchmark(function (html, callback) {
-      const $ = niddle.parse(html);
-      $.select("body").outerHtml();
+      const $ = load(html, { xml: true });
+      $("body").html();
       callback();
     });
 
@@ -15,7 +15,7 @@ export default function cheerio() {
 
     bench.on("result", function (stat) {
       console.log(
-        "niddle               :" +
+        "cheerio-htmlparser2  :" +
           stat.mean().toPrecision(6) +
           " ms/file ± " +
           stat.sd().toPrecision(6),
