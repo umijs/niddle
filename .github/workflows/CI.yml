@@ -144,7 +144,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bindings-${{ matrix.settings.target }}
-          path: ./@niddle-rs/
+          path: ${{ env.APP_NAME }}.*.node
           if-no-files-found: error
   build-freebsd:
     runs-on: ubuntu-latest
@@ -191,7 +191,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bindings-freebsd
-          path: ./@niddle-rs/
+          path: ${{ env.APP_NAME }}.*.node
           if-no-files-found: error
   test-macOS-windows-binding:
     name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
@@ -224,7 +224,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-${{ matrix.settings.target }}
-          path: ./@niddle-rs/
+          path: .
       - name: List packages
         run: ls -R .
         shell: bash
@@ -254,7 +254,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-x86_64-unknown-linux-gnu
-          path: ./@niddle-rs/
+          path: .
       - name: List packages
         run: ls -R .
         shell: bash
@@ -286,7 +286,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-x86_64-unknown-linux-musl
-          path: ./@niddle-rs/
+          path: .
       - name: List packages
         run: ls -R .
         shell: bash
@@ -309,7 +309,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-aarch64-unknown-linux-gnu
-          path: ./@niddle-rs/
+          path: .
       - name: List packages
         run: ls -R .
         shell: bash
@@ -343,7 +343,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-aarch64-unknown-linux-musl
-          path: ./@niddle-rs/
+          path: .
       - name: List packages
         run: ls -R .
         shell: bash
@@ -382,7 +382,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-armv7-unknown-linux-gnueabihf
-          path: ./@niddle-rs/
+          path: .
       - name: List packages
         run: ls -R .
         shell: bash
@@ -422,19 +422,19 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-x86_64-apple-darwin
-          path: ./artifacts/@niddle-rs
+          path: artifacts
       - name: Download macOS arm64 artifact
         uses: actions/download-artifact@v4
         with:
           name: bindings-aarch64-apple-darwin
-          path: ./artifacts/@niddle-rs
+          path: artifacts
       - name: Combine binaries
         run: yarn universal
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: bindings-universal-apple-darwin
-          path: ./artifacts/@niddle-rs/
+          path: artifacts
           if-no-files-found: error
   publish:
     name: Publish
@@ -460,7 +460,7 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ./artifacts/@niddle-rs
+          path: artifacts
       - name: Move artifacts
         run: yarn artifacts
       - name: List packages
