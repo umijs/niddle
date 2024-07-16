@@ -1,5 +1,3 @@
 node_modules
 target
-npm
 *.node
-package-lock.json

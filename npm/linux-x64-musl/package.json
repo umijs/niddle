@@ -1,0 +1,21 @@
+{
+  "name": "niddle-linux-x64-musl",
+  "version": "0.0.7",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "main": "niddle.linux-x64-musl.node",
+  "files": [
+    "niddle.linux-x64-musl.node"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10"
+  },
+  "libc": [
+    "musl"
+  ]
+}
