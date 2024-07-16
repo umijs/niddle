@@ -15,7 +15,7 @@ mod node_repr;
 #[napi]
 pub fn parse(html: String) -> NodeRepr {
   let parser = parse_html();
-  let document_node = parser.one(html).document_node;
+  let document_node = parser.one(html);
   NodeRepr {
     node_ref: document_node,
   }

@@ -1,25 +1,22 @@
 [package]
 edition = "2021"
-name = "niddle"
+name    = "niddle"
 version = "0.0.0"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-html5ever = "0.25.0"
-indexmap = "2.2.6"
-kuchikiki = "0.8.4-speedreader"
+html5ever = "0.27.0"
+indexmap  = { version = "2.2.6", default-features = false, falsefeatures = ["rayon"] }
+kuchikiki = { git = "https://github.com/brave/kuchikiki.git", rev = "28e1ec0" }
 # Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
-napi = { version = "2.12.2", default-features = false, features = [
-  "napi1",
-  "object_indexmap",
-] }
-napi-derive = "2.12.2"
+napi        = { version = "3.0.0-alpha.7", default-features = false, features = ["object_indexmap"] }
+napi-derive = "3.0.0-alpha.6"
 
 [build-dependencies]
-napi-build = "2.0.1"
+napi-build = "2.1.3"
 
 [profile.release]
-lto = true
+lto   = true
 strip = "symbols"
