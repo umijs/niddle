@@ -1,7 +1,13 @@
 Start to develop ant test
 
 ```bash
-npm i
-npm run build
-npm run test
+yarn install
+yarn build
+yarn test
+```
+
+Benchmark
+
+```bash
+yarn benchmark
 ```
