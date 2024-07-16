@@ -1,6 +1,6 @@
 {
   "name": "@niddle-rs/niddle-linux-arm-musleabihf",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "os": [
     "linux"
   ],
