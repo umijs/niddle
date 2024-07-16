@@ -35,6 +35,8 @@
   "devDependencies": {
     "@napi-rs/cli": "^2.18.4",
     "ava": "^6.0.1",
+    "cheerio": "^1.0.0-rc.12",
+    "htmlparser-benchmark": "^1.1.3",
     "js-beautify": "^1.15.1"
   },
   "ava": {
@@ -48,9 +50,10 @@
     "build": "napi build --platform --release",
     "build:debug": "napi build --platform",
     "prepublishOnly": "napi prepublish -t npm",
-    "test": "ava",
     "universal": "napi universal",
-    "version": "napi version"
+    "version": "napi version",
+    "test": "ava",
+    "benchmark": "node ./benchmark/benchmark.mjs"
   },
   "repository": "https://github.com/niddle-rs/niddle",
   "packageManager": "yarn@4.3.1",
