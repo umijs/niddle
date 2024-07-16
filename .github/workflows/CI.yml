@@ -423,12 +423,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bindings-x86_64-apple-darwin
-          path: artifacts
+          path: ./artifacts/@niddle-rs
       - name: Download macOS arm64 artifact
         uses: actions/download-artifact@v4
         with:
           name: bindings-aarch64-apple-darwin
-          path: artifacts
+          path: ./artifacts/@niddle-rs
       - name: Combine binaries
         run: yarn universal
       - name: Upload artifact
@@ -461,7 +461,7 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          path: artifacts
+          path: ./artifacts/@niddle-rs
       - name: Move artifacts
         run: yarn artifacts
       - name: List packages
