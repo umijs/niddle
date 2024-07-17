@@ -55,7 +55,7 @@
     "universal": "napi universal",
     "version": "napi version",
     "test": "ava",
-    "patchdts": "ls -R . && cat ./patch.d.ts >> ./index.d.ts",
+    "patchdts": "ls . && cat ./patch.d.ts >> ./index.d.ts",
     "benchmark": "node ./benchmark/benchmark.mjs"
   },
   "repository": "https://github.com/niddle-rs/niddle",
