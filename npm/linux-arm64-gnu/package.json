@@ -7,9 +7,9 @@
   "cpu": [
     "arm64"
   ],
-  "main": "@niddle-rs/niddle.linux-arm64-gnu.node",
+  "main": "niddle.linux-arm64-gnu.node",
   "files": [
-    "@niddle-rs/niddle.linux-arm64-gnu.node"
+    "niddle.linux-arm64-gnu.node"
   ],
   "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
@@ -21,3 +21,4 @@
     "glibc"
   ]
 }
+

@@ -4,9 +4,9 @@
   "os": [
     "darwin"
   ],
-  "main": "@niddle-rs/niddle.darwin-universal.node",
+  "main": "niddle.darwin-universal.node",
   "files": [
-    "@niddle-rs/niddle.darwin-universal.node"
+    "niddle.darwin-universal.node"
   ],
   "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
@@ -15,3 +15,4 @@
   },
   "repository": "https://github.com/niddle-rs/niddle"
 }
+

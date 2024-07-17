@@ -7,9 +7,9 @@
   "cpu": [
     "arm64"
   ],
-  "main": "@niddle-rs/niddle.darwin-arm64.node",
+  "main": "niddle.darwin-arm64.node",
   "files": [
-    "@niddle-rs/niddle.darwin-arm64.node"
+    "niddle.darwin-arm64.node"
   ],
   "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
@@ -18,3 +18,4 @@
   },
   "repository": "https://github.com/niddle-rs/niddle"
 }
+

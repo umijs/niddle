@@ -7,9 +7,9 @@
   "cpu": [
     "ia32"
   ],
-  "main": "@niddle-rs/niddle.win32-ia32-msvc.node",
+  "main": "niddle.win32-ia32-msvc.node",
   "files": [
-    "@niddle-rs/niddle.win32-ia32-msvc.node"
+    "niddle.win32-ia32-msvc.node"
   ],
   "description": "A super fast html parser and manipulator written in rust.",
   "license": "MIT",
@@ -18,3 +18,4 @@
   },
   "repository": "https://github.com/niddle-rs/niddle"
 }
+
