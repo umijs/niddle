@@ -49,12 +49,13 @@
   },
   "scripts": {
     "artifacts": "napi artifacts",
-    "build": "napi build --platform --release",
-    "build:debug": "napi build --platform",
+    "build": "napi build --platform --release && yarn patchdts",
+    "build:debug": "napi build --platform && yarn patchdts",
     "prepublishOnly": "napi prepublish -t npm",
     "universal": "napi universal",
     "version": "napi version",
     "test": "ava",
+    "patchdts": "cat ./patch.d.ts >> ./index.d.ts",
     "benchmark": "node ./benchmark/benchmark.mjs"
   },
   "repository": "https://github.com/niddle-rs/niddle",
