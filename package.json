@@ -5,8 +5,7 @@
   "types": "index.d.ts",
   "files": [
     "index.js",
-    "index.d.ts",
-    "niddle.*.node"
+    "index.d.ts"
   ],
   "napi": {
     "name": "niddle",
