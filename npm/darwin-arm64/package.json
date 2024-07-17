@@ -1,6 +1,6 @@
 {
   "name": "@niddle-rs/niddle-darwin-arm64",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "os": [
     "darwin"
   ],
@@ -18,4 +18,3 @@
   },
   "repository": "https://github.com/niddle-rs/niddle"
 }
-
