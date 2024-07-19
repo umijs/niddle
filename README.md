@@ -1,4 +1,4 @@
-Start to develop ant test
+Start to develop and test
 
 ```bash
 yarn install
