@@ -1,5 +1,11 @@
 [workspace]
-members = ["crates/*"]
+members  = ["crates/*"]
+resolver = "2"
+
+[workspace.dependencies]
+html5ever = "0.27.0"
+indexmap  = "2.2.6"
+kuchikiki = { git = "https://github.com/xusd320/kuchikiki.git", rev = "c671c7b" }
 
 [profile.release]
 lto   = true

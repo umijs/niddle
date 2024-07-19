@@ -29,11 +29,6 @@ mod tests {
   #[bench]
   fn bench_parse(b: &mut Bencher) {
     let html = include_str!("../../../test/jquery.html").to_string();
-    b.iter(|| {
-      parse(html.clone())
-        .select("html".to_string())
-        .unwrap()
-        .outer_html()
-    });
+    b.iter(|| parse(html.to_string()));
   }
 }
