@@ -9,7 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 html5ever = "0.27.0"
 indexmap  = "2.2.6"
-kuchikiki = { git = "https://github.com/brave/kuchikiki.git", rev = "28e1ec0" }
+kuchikiki = { git = "https://github.com/xusd320/kuchikiki.git", rev = "c671c7b" }
 # Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
 napi        = { version = "3.0.0-alpha.7", default-features = false, features = ["object_indexmap"] }
 napi-derive = "3.0.0-alpha.6"

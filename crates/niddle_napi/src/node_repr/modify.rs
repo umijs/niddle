@@ -1,4 +1,4 @@
-use html5ever::LocalName;
+use html5ever::{tendril::StrTendril, LocalName};
 use indexmap::IndexMap;
 
 use super::NodeRepr;
@@ -83,7 +83,7 @@ impl NodeRepr {
       ele
         .attributes
         .borrow_mut()
-        .insert(LocalName::from(name), value);
+        .insert(LocalName::from(name), StrTendril::from(value));
     }
   }
 
@@ -94,7 +94,7 @@ impl NodeRepr {
         ele
           .attributes
           .borrow_mut()
-          .insert(LocalName::from(name), value);
+          .insert(LocalName::from(name), StrTendril::from(value));
       });
     }
   }
