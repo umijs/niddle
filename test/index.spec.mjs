@@ -15,6 +15,17 @@ function formatHtml(html) {
     .replace(/\r\n/g, "\n");
 }
 
+test("should sanitise html", (t) => {
+  const $ = parse(
+    '<div class="one">first</div><body>Bad body</body><div id="two">second</div>',
+  );
+
+  t.is(
+    $.outerHtml(),
+    '<html><head></head><body><div class="one">first</div>Bad body<div id="two">second</div></body></html>',
+  );
+});
+
 test("should not change the original html structure", (t) => {
   const jqueryHtml = fs.readFileSync(path.resolve(__dirname, "jquery.html"), {
     encoding: "utf8",
