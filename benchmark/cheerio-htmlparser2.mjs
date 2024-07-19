@@ -5,7 +5,6 @@ export default function cheerio() {
   return new Promise((res) => {
     var bench = benchmark(function (html, callback) {
       const $ = load(html, { xml: true });
-      $("body").html();
       callback();
     });
 
