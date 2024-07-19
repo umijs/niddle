@@ -16,7 +16,7 @@ impl Serialize for NodeRepr {
     serializer: &mut S,
     traversal_scope: TraversalScope,
   ) -> Result<()> {
-    match (traversal_scope, self.node_ref.data()) {
+    match (traversal_scope, self.0.data()) {
       (ref scope, NodeData::Element(element)) => {
         if *scope == IncludeNode {
           let attrs = element.attributes.borrow();
@@ -38,7 +38,7 @@ impl Serialize for NodeRepr {
           )?
         }
 
-        for child in self.node_ref.children() {
+        for child in self.0.children() {
           Serialize::serialize(&child, serializer, IncludeNode)?
         }
 
@@ -49,7 +49,7 @@ impl Serialize for NodeRepr {
       }
 
       (_, &NodeData::DocumentFragment) | (_, &NodeData::Document(_)) => {
-        for child in self.node_ref.children() {
+        for child in self.0.children() {
           Serialize::serialize(&child, serializer, IncludeNode)?
         }
         Ok(())

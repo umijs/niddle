@@ -3,36 +3,35 @@ use kuchikiki::{ElementData, NodeDataRef, NodeRef};
 mod modify;
 mod query;
 
+/// The node object, cann't be instantiated in javascript.
 #[napi]
-pub struct NodeRepr {
-  pub(crate) node_ref: NodeRef,
-}
+pub struct NodeRepr(pub(crate) NodeRef);
 
 impl From<NodeDataRef<ElementData>> for NodeRepr {
   fn from(element: NodeDataRef<ElementData>) -> Self {
-    Self {
-      node_ref: element.as_node().clone(),
-    }
+    Self(element.as_node().clone())
   }
 }
 
 impl From<NodeRef> for NodeRepr {
   fn from(node_ref: NodeRef) -> Self {
-    Self { node_ref }
+    Self(node_ref)
   }
 }
 
 #[napi]
 impl NodeRepr {
+  /// Clone this node to a new instance, not clone its descendants.
   #[napi(js_name = "clone")]
   pub fn clone_self_only(&self) -> NodeRepr {
-    let new_node_ref = NodeRef::new(self.node_ref.data().clone());
+    let new_node_ref = NodeRef::new(self.0.data().clone());
     NodeRepr::from(new_node_ref)
   }
 
+  /// Clone this node to a new instance, including its all descendants.
   #[napi]
   pub fn clone_recursive(&self) -> NodeRepr {
-    NodeRepr::from(clone_node_ref_recursive(&self.node_ref))
+    NodeRepr::from(clone_node_ref_recursive(&self.0))
   }
 }
 
