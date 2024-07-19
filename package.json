@@ -38,7 +38,9 @@
     "cheerio": "^1.0.0-rc.12",
     "htmlparser-benchmark": "^1.1.3",
     "husky": "^8.0.0",
-    "js-beautify": "^1.15.1"
+    "js-beautify": "^1.15.1",
+    "typedoc": "^0.26.4",
+    "typescript": "^5.5.3"
   },
   "ava": {
     "timeout": "3m"
@@ -56,7 +58,8 @@
     "test": "ava",
     "patchdts": "cat ./patch.d.ts >> ./index.d.ts",
     "benchmark": "node ./benchmark/benchmark.mjs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docs": "typedoc ./index.d.ts"
   },
   "repository": "https://github.com/niddle-rs/niddle",
   "packageManager": "yarn@4.3.1",
