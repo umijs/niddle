@@ -6,7 +6,7 @@
 /** Parse string input to a html tree, return the root node. */
 export function parse(html: string): NodeRepr;
 /** The node object, cann't be instantiated in javascript. */
-export declare interface NodeRepr {
+export interface NodeRepr {
   /**
    * Append a child node to this node, after existing children.
    *
