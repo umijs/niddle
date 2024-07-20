@@ -1453,6 +1453,7 @@ __metadata:
     husky: "npm:^8.0.0"
     js-beautify: "npm:^1.15.1"
     typedoc: "npm:^0.26.4"
+    typedoc-plugin-markdown: "npm:^4.2.1"
     typescript: "npm:^5.5.3"
   languageName: unknown
   linkType: soft
@@ -1984,6 +1985,15 @@ __metadata:
   version: 0.13.1
   resolution: "type-fest@npm:0.13.1"
   checksum: 10c0/0c0fa07ae53d4e776cf4dac30d25ad799443e9eef9226f9fddbb69242db86b08584084a99885cfa5a9dfe4c063ebdc9aa7b69da348e735baede8d43f1aeae93b
+  languageName: node
+  linkType: hard
+
+"typedoc-plugin-markdown@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "typedoc-plugin-markdown@npm:4.2.1"
+  peerDependencies:
+    typedoc: 0.26.x
+  checksum: 10c0/b56e6c8853e866a215a6dab81a7ed471777f00822f8e9de35935aa67b55a6459a5ab05391e7407a1aa4a76c5ada0eb8e1362589eda6c6eb203dbc3e4166d1e55
   languageName: node
   linkType: hard
 

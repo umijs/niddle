@@ -3,7 +3,6 @@ use kuchikiki::{ElementData, NodeDataRef, NodeRef};
 mod modify;
 mod query;
 
-/// The node object, cann't be instantiated in javascript.
 #[napi]
 pub struct NodeRepr(pub(crate) NodeRef);
 
@@ -16,6 +15,17 @@ impl From<NodeDataRef<ElementData>> for NodeRepr {
 impl From<NodeRef> for NodeRepr {
   fn from(node_ref: NodeRef) -> Self {
     Self(node_ref)
+  }
+}
+
+#[napi]
+impl NodeRepr {
+  ///
+  /// @private
+  ///
+  #[napi(constructor, ts_return_type = "void")]
+  pub fn constructor() {
+    unreachable!()
   }
 }
 

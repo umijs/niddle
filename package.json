@@ -40,6 +40,7 @@
     "husky": "^8.0.0",
     "js-beautify": "^1.15.1",
     "typedoc": "^0.26.4",
+    "typedoc-plugin-markdown": "^4.2.1",
     "typescript": "^5.5.3"
   },
   "ava": {
@@ -59,7 +60,7 @@
     "patchdts": "cat ./patch.d.ts >> ./index.d.ts",
     "benchmark": "node ./benchmark/benchmark.mjs",
     "prepare": "husky install",
-    "docs": "typedoc ./index.d.ts"
+    "docs": "npx typedoc ./index.d.ts && mv ./docs/README.md ./README.md"
   },
   "repository": "https://github.com/niddle-rs/niddle",
   "packageManager": "yarn@4.3.1",
