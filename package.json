@@ -62,7 +62,7 @@
     "prepare": "husky install",
     "docs": "npx typedoc ./index.d.ts && mv ./docs/README.md ./README.md"
   },
-  "repository": "https://github.com/niddle-rs/niddle",
+  "repository": "https://github.com/umijs/niddle",
   "packageManager": "yarn@4.3.1",
   "description": "A super fast html parser and manipulator written in rust."
 }
