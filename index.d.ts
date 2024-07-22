@@ -91,10 +91,3 @@ export declare class NodeRepr {
   /** Clone this node to a new instance, including its all descendants. */
   cloneRecursive(): NodeRepr
 }
-export declare interface NodeRepr {
-  /** The node object, cann't be instantiated in javascript. So call the constructor will throw an error */
-  constructor(): void;
-  select(selectors: "html"): NodeRepr;
-  select(selectors: "head"): NodeRepr;
-  select(selectors: "body"): NodeRepr;
-}
