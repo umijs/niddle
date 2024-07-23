@@ -13,6 +13,7 @@ mod serializer;
 mod node_repr;
 
 /// Parse string input to a html tree, return the root node.
+///
 #[napi]
 pub fn parse(html: String) -> NodeRepr {
   let parser = parse_html();

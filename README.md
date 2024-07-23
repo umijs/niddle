@@ -8,6 +8,22 @@
 
 ### NodeRepr
 
+#### Constructors
+
+##### new NodeRepr()
+
+> **new NodeRepr**(): [`NodeRepr`](README.md#noderepr)
+
+The node object, cann't be instantiated in javascript. So call the constructor will throw an error.
+
+###### Returns
+
+[`NodeRepr`](README.md#noderepr)
+
+###### Defined in
+
+[index.d.ts:137](https://github.com/umijs/niddle/blob/main/index.d.ts#L137)
+
 #### Methods
 
 ##### append()
@@ -30,7 +46,7 @@ The child node will be remove from its previous position.
 
 ###### Defined in
 
-[index.d.ts:14](https://github.com/umijs/niddle/blob/main/index.d.ts#L14)
+[index.d.ts:18](https://github.com/umijs/niddle/blob/main/index.d.ts#L18)
 
 ##### appendSequence()
 
@@ -52,7 +68,7 @@ These children nodes will be remove from their previous position.
 
 ###### Defined in
 
-[index.d.ts:20](https://github.com/umijs/niddle/blob/main/index.d.ts#L20)
+[index.d.ts:25](https://github.com/umijs/niddle/blob/main/index.d.ts#L25)
 
 ##### clone()
 
@@ -66,7 +82,7 @@ Clone this node to a new instance, not clone its descendants.
 
 ###### Defined in
 
-[index.d.ts:90](https://github.com/umijs/niddle/blob/main/index.d.ts#L90)
+[index.d.ts:142](https://github.com/umijs/niddle/blob/main/index.d.ts#L142)
 
 ##### cloneRecursive()
 
@@ -80,21 +96,7 @@ Clone this node to a new instance, including its all descendants.
 
 ###### Defined in
 
-[index.d.ts:92](https://github.com/umijs/niddle/blob/main/index.d.ts#L92)
-
-##### constructor()
-
-> **constructor**(): `void`
-
-The node object, cann't be instantiated in javascript. So call the constructor will throw an error
-
-###### Returns
-
-`void`
-
-###### Defined in
-
-[index.d.ts:96](https://github.com/umijs/niddle/blob/main/index.d.ts#L96)
+[index.d.ts:147](https://github.com/umijs/niddle/blob/main/index.d.ts#L147)
 
 ##### getAttribute()
 
@@ -114,7 +116,7 @@ Get attribute value of this node by given name.
 
 ###### Defined in
 
-[index.d.ts:74](https://github.com/umijs/niddle/blob/main/index.d.ts#L74)
+[index.d.ts:112](https://github.com/umijs/niddle/blob/main/index.d.ts#L112)
 
 ##### getAttributes()
 
@@ -128,7 +130,7 @@ Get attributes K-V object of this node.
 
 ###### Defined in
 
-[index.d.ts:76](https://github.com/umijs/niddle/blob/main/index.d.ts#L76)
+[index.d.ts:117](https://github.com/umijs/niddle/blob/main/index.d.ts#L117)
 
 ##### getChildren()
 
@@ -142,13 +144,13 @@ Get all children nodes of this node.
 
 ###### Defined in
 
-[index.d.ts:72](https://github.com/umijs/niddle/blob/main/index.d.ts#L72)
+[index.d.ts:107](https://github.com/umijs/niddle/blob/main/index.d.ts#L107)
 
 ##### innerHtml()
 
 > **innerHtml**(): `string`
 
-Get the serialized html of this node, only including its all descendants;.
+Get the serialized html of this node, only including its all descendants.
 
 ###### Returns
 
@@ -156,7 +158,7 @@ Get the serialized html of this node, only including its all descendants;.
 
 ###### Defined in
 
-[index.d.ts:80](https://github.com/umijs/niddle/blob/main/index.d.ts#L80)
+[index.d.ts:127](https://github.com/umijs/niddle/blob/main/index.d.ts#L127)
 
 ##### insertAfter()
 
@@ -178,7 +180,7 @@ The sibling node will be remove from its previous position.
 
 ###### Defined in
 
-[index.d.ts:38](https://github.com/umijs/niddle/blob/main/index.d.ts#L38)
+[index.d.ts:46](https://github.com/umijs/niddle/blob/main/index.d.ts#L46)
 
 ##### insertBefore()
 
@@ -200,7 +202,7 @@ The sibling node will be remove from its previous position.
 
 ###### Defined in
 
-[index.d.ts:50](https://github.com/umijs/niddle/blob/main/index.d.ts#L50)
+[index.d.ts:60](https://github.com/umijs/niddle/blob/main/index.d.ts#L60)
 
 ##### insertSequenceAfter()
 
@@ -222,7 +224,7 @@ These sibling nodes will be remove from their previous position.
 
 ###### Defined in
 
-[index.d.ts:44](https://github.com/umijs/niddle/blob/main/index.d.ts#L44)
+[index.d.ts:53](https://github.com/umijs/niddle/blob/main/index.d.ts#L53)
 
 ##### insertSequenceBefore()
 
@@ -244,13 +246,13 @@ These sibling nodes will be remove from their previous position.
 
 ###### Defined in
 
-[index.d.ts:56](https://github.com/umijs/niddle/blob/main/index.d.ts#L56)
+[index.d.ts:67](https://github.com/umijs/niddle/blob/main/index.d.ts#L67)
 
 ##### outerHtml()
 
 > **outerHtml**(): `string`
 
-Get the serialized html of this node, including its all descendants and itelf;.
+Get the serialized html of this node, including its all descendants and itelf.
 
 ###### Returns
 
@@ -258,7 +260,7 @@ Get the serialized html of this node, including its all descendants and itelf;.
 
 ###### Defined in
 
-[index.d.ts:78](https://github.com/umijs/niddle/blob/main/index.d.ts#L78)
+[index.d.ts:122](https://github.com/umijs/niddle/blob/main/index.d.ts#L122)
 
 ##### prepend()
 
@@ -280,7 +282,7 @@ The child node will be remove from its previous position.
 
 ###### Defined in
 
-[index.d.ts:26](https://github.com/umijs/niddle/blob/main/index.d.ts#L26)
+[index.d.ts:32](https://github.com/umijs/niddle/blob/main/index.d.ts#L32)
 
 ##### prependSequence()
 
@@ -302,7 +304,7 @@ These children nodes will be remove from their previous position.
 
 ###### Defined in
 
-[index.d.ts:32](https://github.com/umijs/niddle/blob/main/index.d.ts#L32)
+[index.d.ts:39](https://github.com/umijs/niddle/blob/main/index.d.ts#L39)
 
 ##### remove()
 
@@ -316,13 +318,13 @@ Remove a node from its parent and siblings. Children are not affected.
 
 ###### Defined in
 
-[index.d.ts:58](https://github.com/umijs/niddle/blob/main/index.d.ts#L58)
+[index.d.ts:72](https://github.com/umijs/niddle/blob/main/index.d.ts#L72)
 
 ##### removeAllAttributes()
 
 > **removeAllAttributes**(): `void`
 
-Remove all attributes of this node
+Remove all attributes of this node.
 
 ###### Returns
 
@@ -330,13 +332,13 @@ Remove all attributes of this node
 
 ###### Defined in
 
-[index.d.ts:66](https://github.com/umijs/niddle/blob/main/index.d.ts#L66)
+[index.d.ts:92](https://github.com/umijs/niddle/blob/main/index.d.ts#L92)
 
 ##### removeAttribute()
 
 > **removeAttribute**(`name`): `void`
 
-Remove an attribute of this node by name
+Remove an attribute of this node by name.
 
 ###### Parameters
 
@@ -350,7 +352,7 @@ Remove an attribute of this node by name
 
 ###### Defined in
 
-[index.d.ts:64](https://github.com/umijs/niddle/blob/main/index.d.ts#L64)
+[index.d.ts:87](https://github.com/umijs/niddle/blob/main/index.d.ts#L87)
 
 ##### select()
 
@@ -372,7 +374,7 @@ Select the the fist node that match the given css selector, like document.queryS
 
 ###### Defined in
 
-[index.d.ts:68](https://github.com/umijs/niddle/blob/main/index.d.ts#L68)
+[index.d.ts:97](https://github.com/umijs/niddle/blob/main/index.d.ts#L97)
 
 ###### select(selectors)
 
@@ -390,7 +392,7 @@ Select the the fist node that match the given css selector, like document.queryS
 
 ###### Defined in
 
-[index.d.ts:97](https://github.com/umijs/niddle/blob/main/index.d.ts#L97)
+[index.d.ts:150](https://github.com/umijs/niddle/blob/main/index.d.ts#L150)
 
 ###### select(selectors)
 
@@ -408,7 +410,7 @@ Select the the fist node that match the given css selector, like document.queryS
 
 ###### Defined in
 
-[index.d.ts:98](https://github.com/umijs/niddle/blob/main/index.d.ts#L98)
+[index.d.ts:151](https://github.com/umijs/niddle/blob/main/index.d.ts#L151)
 
 ###### select(selectors)
 
@@ -426,7 +428,7 @@ Select the the fist node that match the given css selector, like document.queryS
 
 ###### Defined in
 
-[index.d.ts:99](https://github.com/umijs/niddle/blob/main/index.d.ts#L99)
+[index.d.ts:152](https://github.com/umijs/niddle/blob/main/index.d.ts#L152)
 
 ##### selectAll()
 
@@ -446,7 +448,7 @@ Select all nodes that match the given css selector, like document.querySelectorA
 
 ###### Defined in
 
-[index.d.ts:70](https://github.com/umijs/niddle/blob/main/index.d.ts#L70)
+[index.d.ts:102](https://github.com/umijs/niddle/blob/main/index.d.ts#L102)
 
 ##### setAttribute()
 
@@ -467,13 +469,13 @@ Assign an attribute K-V to this node
 
 ###### Defined in
 
-[index.d.ts:60](https://github.com/umijs/niddle/blob/main/index.d.ts#L60)
+[index.d.ts:77](https://github.com/umijs/niddle/blob/main/index.d.ts#L77)
 
 ##### setAttributes()
 
 > **setAttributes**(`attrs`): `void`
 
-Assign attributes K-V object to this node
+Assign attributes K-V object to this node.
 
 ###### Parameters
 
@@ -487,13 +489,13 @@ Assign attributes K-V object to this node
 
 ###### Defined in
 
-[index.d.ts:62](https://github.com/umijs/niddle/blob/main/index.d.ts#L62)
+[index.d.ts:82](https://github.com/umijs/niddle/blob/main/index.d.ts#L82)
 
 ##### text()
 
 > **text**(): `string`
 
-Get all text nodes content of this node, including its all descendants and itelf;.
+Get all text nodes content of this node, including its all descendants and itelf.
 
 ###### Returns
 
@@ -501,7 +503,7 @@ Get all text nodes content of this node, including its all descendants and itelf
 
 ###### Defined in
 
-[index.d.ts:82](https://github.com/umijs/niddle/blob/main/index.d.ts#L82)
+[index.d.ts:132](https://github.com/umijs/niddle/blob/main/index.d.ts#L132)
 
 ## Functions
 
@@ -523,4 +525,4 @@ Parse string input to a html tree, return the root node.
 
 #### Defined in
 
-[index.d.ts:7](https://github.com/umijs/niddle/blob/main/index.d.ts#L7)
+[index.d.ts:10](https://github.com/umijs/niddle/blob/main/index.d.ts#L10)

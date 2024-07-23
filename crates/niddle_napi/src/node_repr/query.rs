@@ -9,12 +9,14 @@ use super::NodeRepr;
 #[napi]
 impl NodeRepr {
   /// Select the the fist node that match the given css selector, like document.querySelector.
+  ///
   #[napi]
   pub fn select(&self, selectors: String) -> Option<NodeRepr> {
     self.0.select_first(&selectors).ok().map(Into::into)
   }
 
   /// Select all nodes that match the given css selector, like document.querySelectorAll.
+  ///
   #[napi]
   pub fn select_all(&self, selectors: String) -> Vec<NodeRepr> {
     self
@@ -24,12 +26,14 @@ impl NodeRepr {
   }
 
   /// Get all children nodes of this node.
+  ///
   #[napi]
   pub fn get_children(&self) -> Vec<NodeRepr> {
     self.0.children().map(Into::into).collect()
   }
 
   /// Get attribute value of this node by given name.
+  ///
   #[napi]
   pub fn get_attribute(&self, name: String) -> Option<String> {
     self
@@ -39,6 +43,7 @@ impl NodeRepr {
   }
 
   /// Get attributes K-V object of this node.
+  ///
   #[napi]
   pub fn get_attributes(&self) -> IndexMap<String, String> {
     self.0.as_element().map_or_else(IndexMap::new, |e| {
@@ -54,7 +59,8 @@ impl NodeRepr {
     })
   }
 
-  /// Get the serialized html of this node, including its all descendants and itelf;.
+  /// Get the serialized html of this node, including its all descendants and itelf.
+  ///
   #[napi]
   pub fn outer_html(&self) -> String {
     let mut u8_vec = Vec::new();
@@ -71,7 +77,8 @@ impl NodeRepr {
     unsafe { String::from_utf8_unchecked(u8_vec) }
   }
 
-  /// Get the serialized html of this node, only including its all descendants;.
+  /// Get the serialized html of this node, only including its all descendants.
+  ///
   #[napi]
   pub fn inner_html(&self) -> String {
     let mut buf = Vec::<u8>::new();
@@ -88,7 +95,8 @@ impl NodeRepr {
     unsafe { String::from_utf8_unchecked(buf) }
   }
 
-  /// Get all text nodes content of this node, including its all descendants and itelf;.
+  /// Get all text nodes content of this node, including its all descendants and itelf.
+  ///
   #[napi]
   pub fn text(&self) -> String {
     let mut buf = Vec::<u8>::new();
