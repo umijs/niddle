@@ -449,7 +449,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bindings-universal-apple-darwin
-          path: artifacts
+          path: niddle.darwin-universal.node
           if-no-files-found: error
   publish:
     name: Publish
